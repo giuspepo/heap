@@ -6,11 +6,14 @@
 #define FACT_REDIM 2
 
 struct heap{
-	void** datos;
+	void** datos; //Datos es un vector de void*, es de tipo void**
 	size_t cant;
 	size_t tam;
 	cmp_func_t cmp;
 };
+//Esta es mi idea: El heap guarda un arreglo de datos que termina siempre en NULL.
+//y cant guarda la posicion de ese ultimo NULL.
+//De esa manera, si el heap esta vacio (cant == 0), ver_max puede aun usar heap-datos[0].
 
 bool heap_redimensionar(heap_t* heap, size_t nuevo_tam){
 	void** datos = realloc( heap->datos, nuevo_tam * sizeof(void*));
